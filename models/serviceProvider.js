@@ -41,7 +41,6 @@ const serviceProviderSchema = new mongoose.Schema(
       type: String,
       required: true, // رخصة الخدمة مطلوبة
       trim: true,
-      unique: true, // التأكد من أن الرخصة فريدة
     },
     certification: {
       type: String,
