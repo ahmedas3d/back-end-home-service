@@ -27,3 +27,5 @@ module.exports = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+// Compare this snippet from api/users.js:
+// const mongoose = require("mongoose");
