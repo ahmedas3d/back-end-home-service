@@ -5,8 +5,8 @@ const serviceProviderSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true, // اسم مقدم الخدمة مطلوب
-      trim: true, // إزالة المسافات الزائدة
+      required: true,
+      trim: true,
     },
     phoneNumber: {
       type: Number,
