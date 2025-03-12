@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const ServiceProvider = require("../models/ServiceProvider");
+const ServiceProvider = require("../models/serviceProvider");
 
 // الاتصال بـ MongoDB يتم عند كل استدعاء للدالة
 module.exports = async (req, res) => {
