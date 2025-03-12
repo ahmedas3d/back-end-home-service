@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../models/User");
+const User = require("../models/user");
 
 // الاتصال بـ MongoDB يتم عند كل استدعاء للدالة
 module.exports = async (req, res) => {
