@@ -1,32 +1,30 @@
-const express = require("express");
-const router = express.Router();
-const Order = require("../../models/order");
-const auth = require("../middleware/auth");
+import { connectToDatabase } from "../../lib/mongodb";
 
-// إنشاء طلب جديد
-router.post("/", auth, async (req, res) => {
-  try {
-    const order = new Order({
-      ...req.body,
-      user: req.user._id,
-    });
-    await order.save();
-    res.status(201).send(order);
-  } catch (error) {
-    res.status(400).send(error);
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    try {
+      const { db } = await connectToDatabase();
+
+      const order = {
+        ...req.body,
+        status: "pending",
+        createdAt: new Date(),
+      };
+
+      const result = await db.collection("orders").insertOne(order);
+
+      res.status(201).json({
+        success: true,
+        orderId: result.insertedId,
+      });
+    } catch (error) {
+      res.status(500).json({
+        error: "Internal Server Error",
+        details: error.message,
+      });
+    }
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-});
-
-// الحصول على جميع طلبات المستخدم
-router.get("/me", auth, async (req, res) => {
-  try {
-    const orders = await Order.find({ user: req.user._id })
-      .populate("service")
-      .populate("provider");
-    res.send(orders);
-  } catch (error) {
-    res.status(500).send();
-  }
-});
-
-module.exports = router;
+}
