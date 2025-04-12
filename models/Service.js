@@ -31,12 +31,6 @@ const serviceSchema = new mongoose.Schema(
       required: false,
       default: 0,
     },
-    orders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Order",
-      },
-    ],
   },
   { timestamps: true }
 );

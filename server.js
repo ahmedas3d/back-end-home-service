@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const serviceProviderRoutes = require("./routes/serviceProviderRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
-const orderRoutes = require("./api/orders/orders");
 
 dotenv.config();
 
@@ -23,7 +22,6 @@ mongoose
 app.use("/api/users", userRoutes);
 app.use("/api/service-providers", serviceProviderRoutes);
 app.use("/api/services", serviceRoutes);
-app.use("/api/orders", orderRoutes);
 // تشغيل السيرفر
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -7,18 +7,6 @@ const userSchema = new mongoose.Schema(
     country: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     image: { type: String, required: false },
-    orders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Order",
-      },
-    ],
-    favorites: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Service",
-      },
-    ],
   },
   { timestamps: true }
 );

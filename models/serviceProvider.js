@@ -81,12 +81,6 @@ const serviceProviderSchema = new mongoose.Schema(
       default: 0, // قيمة افتراضية
       min: 0, // لا يمكن أن يكون سالبًا
     },
-    orders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Order",
-      },
-    ],
   },
   {
     timestamps: true, // إضافة حقول createdAt وupdatedAt تلقائيًا
