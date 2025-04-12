@@ -5,7 +5,6 @@ const userRoutes = require("./routes/userRoutes");
 const serviceProviderRoutes = require("./routes/serviceProviderRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const orderRoutes = require("./api/orders/orders");
-const orderIdRoutes = require("./api/orders/[id]");
 
 dotenv.config();
 
@@ -25,7 +24,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/service-providers", serviceProviderRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/orders", orderIdRoutes);
 // تشغيل السيرفر
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
